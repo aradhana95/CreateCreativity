@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CreateCreativity</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    //musics
+
+    <string-array name="music_list">
+        <item>david_fesliyan</item>
+    </string-array>
 </resources>
