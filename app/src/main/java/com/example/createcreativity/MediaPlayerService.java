@@ -46,23 +46,24 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
 
 
     private void initMediaPlayer() {
-        mediaPlayer = new MediaPlayer();
-        mediaPlayer.setOnBufferingUpdateListener(this);
+        mediaPlayer = MediaPlayer.create(this,R.raw.newssong);
+        mediaPlayer.start();
+      /*  mediaPlayer.setOnBufferingUpdateListener(this);
         mediaPlayer.setOnCompletionListener(this);
         mediaPlayer.setOnErrorListener(this);
         mediaPlayer.setOnInfoListener(this);
         mediaPlayer.setOnPreparedListener(this);
         mediaPlayer.setOnSeekCompleteListener(this);
-        mediaPlayer.reset();
+        mediaPlayer.reset();*/
 
-        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        try {
+      //  mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+       /* try {
             mediaPlayer.setDataSource(mediaFile);
         } catch (IOException e) {
             e.printStackTrace();
             stopSelf();
-        }
-        mediaPlayer.prepareAsync();
+        }*/
+      //  mediaPlayer.prepareAsync();
     }
 
     @Override

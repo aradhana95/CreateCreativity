@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.view.View;
@@ -60,6 +61,7 @@ public class TxtSlidePresentation extends AppCompatActivity implements  Fragment
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     FragmentActionListener fragmentActionListener;
+    MediaPlayer mediaPlayer;
 
 
     @Override
@@ -118,16 +120,18 @@ public class TxtSlidePresentation extends AppCompatActivity implements  Fragment
                                             fragmentTransaction.addToBackStack(null);
                                             fragmentTransaction.commit();
                                             break;
-                                   case 6:  fragment_container.setVisibility(View.GONE);
+                                   case 6:  /*fragment_container.setVisibility(View.GONE);
                                             musivLayout.setVisibility(View.GONE);
-                                            txtImageLayout.setVisibility(View.GONE);
+                                            txtImageLayout.setVisibility(View.GONE);*/
                                             fragmentTransaction = fragmentManager.beginTransaction();
                                             MusicListFragment musicListFragment = new MusicListFragment(context);
                                             musicListFragment.setFragmentActionListener(this);
                                             Bundle bundle1 = new Bundle();
-                                            fragmentTransaction.add(R.id.music_list_fragment,musicListFragment);
+                                            fragmentTransaction.add(R.id.txt_vid_parent,musicListFragment);
                                             fragmentTransaction.addToBackStack(null);
                                             fragmentTransaction.commit();
+
+
                                             break;
 
 
@@ -181,5 +185,7 @@ public class TxtSlidePresentation extends AppCompatActivity implements  Fragment
             }
         }
     }
+
+
 }
 //q

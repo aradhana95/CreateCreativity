@@ -14,6 +14,7 @@ import android.widget.ListView;
 
 
 public class MusicListFragment extends ListFragment {
+    Context context;
   FragmentActionListener fragmentActionListener;
   String[] music_menu;
     public MusicListFragment() {
@@ -21,7 +22,7 @@ public class MusicListFragment extends ListFragment {
     }
 
     public MusicListFragment(Context context){
-
+        this.context = context;
     }
     public  void setFragmentActionListener(FragmentActionListener fragmentActionListener){
         this.fragmentActionListener = fragmentActionListener;
@@ -54,6 +55,7 @@ public class MusicListFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id){
         PlayMusicFragment playMusicFragment = (PlayMusicFragment)getFragmentManager().findFragmentById(R.id.play_music_fragment);
+        playMusicFragment.setContext(context);
         playMusicFragment.playMusic(music_menu[position]);
         getListView().setSelector(android.R.color.holo_purple);
 

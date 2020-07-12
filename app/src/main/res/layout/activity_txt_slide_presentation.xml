@@ -98,7 +98,8 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:layout_weight="1"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:visibility="gone">
 
             <fragment
                 android:id="@+id/music_list_fragment"
