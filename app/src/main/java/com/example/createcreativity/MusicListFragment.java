@@ -52,12 +52,12 @@ public class MusicListFragment extends ListFragment {
         setListAdapter(arrayAdapter);
     }
 
-    @Override
+    /*@Override
     public void onListItemClick(ListView l, View v, int position, long id){
         PlayMusicFragment playMusicFragment = (PlayMusicFragment)getFragmentManager().findFragmentById(R.id.play_music_fragment);
         playMusicFragment.setContext(context);
         playMusicFragment.playMusic(music_menu[position]);
         getListView().setSelector(android.R.color.holo_purple);
 
-    }
+    }*/
 }

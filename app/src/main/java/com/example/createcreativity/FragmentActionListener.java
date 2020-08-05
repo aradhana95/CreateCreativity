@@ -12,4 +12,5 @@ public interface FragmentActionListener {
     void onSelectedLayout(Context context);
     void IntentListener(int requstCode);
     void data(Intent data);
+    void OnClickId(int id);
 }

@@ -10,13 +10,14 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Toast;
+
+import com.example.createcreativity.NewsFragments.VidioText_fragment;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -62,6 +63,10 @@ public class TxtSlidePresentation extends AppCompatActivity implements  Fragment
     FragmentTransaction fragmentTransaction;
     FragmentActionListener fragmentActionListener;
     MediaPlayer mediaPlayer;
+    Bundle bundle;
+    String layType;
+
+
 
 
     @Override
@@ -69,7 +74,7 @@ public class TxtSlidePresentation extends AppCompatActivity implements  Fragment
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_txt_slide_presentation);
         initialization();
-        startViewFlipper(this);
+        LayoutFrag(this,layType);
        // MediaPlayer mediaPlayer =   MediaPlayer.create(this,);
         //mediaPlayer.start();
 
@@ -88,22 +93,38 @@ public class TxtSlidePresentation extends AppCompatActivity implements  Fragment
     public void initialization() {
         ButterKnife.bind(this);
         fragmentManager = getSupportFragmentManager();
-        fragmentActionListener = (TxtSlidePresentation)this;
+        fragmentActionListener = this;
+         bundle = new Bundle();
+        layType= bundle.getString("layout");
     }
 
-    public  void  startViewFlipper(Context context){
+    public  void  LayoutFrag(Context context,String layType){
+        //  <item>onlyText</item>
+        //        <item>textVidio</item>
+        //        <item>vidio</item>
+
         fragmentTransaction = fragmentManager.beginTransaction();
-        ViewFlipperFragment viewFlipperFragment =  new ViewFlipperFragment(this);
-        Bundle bundle = new Bundle();
-      //  bundle.putC(FragmentActionListener.LAYYOUT_SELECTED,context);
-        viewFlipperFragment.setArguments(bundle);
-        viewFlipperFragment.setFragmentActionListener(this);
-        fragmentTransaction.add(R.id.fragment_container,viewFlipperFragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        if(layType.matches("onlyText")){
+            ViewFlipperFragment viewFlipperFragment =  new ViewFlipperFragment(this);
+           // initLayFrag(context,viewFlipperFragment);
+           // viewFlipperFragment.setArguments(bundle);
+            viewFlipperFragment.setFragmentActionListener(this);
+            fragmentTransaction.add(R.id.fragment_container,viewFlipperFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        }
 
+        else if(layType.matches("vidio")) {
+            VidioText_fragment vidioText_fragment =  new VidioText_fragment(this);
+           // VidioText_fragment.setFragmentActionListener(this);
+            fragmentTransaction.add(R.id.fragment_container,vidioText_fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
 
+        };
     }
+
+
 
 
 
@@ -169,6 +190,20 @@ public class TxtSlidePresentation extends AppCompatActivity implements  Fragment
     public void data(Intent  data) {
         ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
 
+
+    }
+
+    @Override
+    public void OnClickId(int id){
+        switch (id){
+            case 11:fragmentTransaction = fragmentManager.beginTransaction();
+                MusicListFragment musicListFragment = new MusicListFragment(this);
+                musicListFragment.setFragmentActionListener(this);
+                Bundle bundle1 = new Bundle();
+                fragmentTransaction.add(R.id.txt_vid_parent,musicListFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+        }
 
     }
 

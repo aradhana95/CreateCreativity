@@ -8,4 +8,19 @@
     <string-array name="music_list">
         <item>david_fesliyan</item>
     </string-array>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    //Layout names
+    <string-array name="layout_catogaries">
+        <item>News</item>
+        <item>Entertaiment</item>
+        <item>Ad</item>
+    </string-array>
+
+    <string-array name="lay_list">
+        <item>onlyText</item>
+        <item>textVidio</item>
+        <item>vidio</item>
+    </string-array>
 </resources>

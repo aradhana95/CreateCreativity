@@ -60,7 +60,7 @@ public class ViewFlipperFragment extends Fragment {
     }
 
     public  void initUI() {
-        int images[] = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_background};
+        int[] images = {R.drawable.ic_launcher_foreground, R.drawable.ic_launcher_background};
         for (int image : images) {
             viewFlipping(image);
         }

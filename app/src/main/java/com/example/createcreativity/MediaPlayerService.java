@@ -148,10 +148,7 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
     private boolean reuestAudioFocus() {
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         int result = audioManager.requestAudioFocus(this, AudioManager.STREAM_MUSIC, AudioManager.AUDIOFOCUS_GAIN);
-        if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
-            return true;
-        }
-        return false;
+        return result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED;
     }
 
     private boolean removeAudioFocus() {
@@ -166,7 +163,6 @@ public class MediaPlayerService extends Service implements MediaPlayer.OnComplet
 
     private void stopMedia() {
         if (mediaPlayer == null) return;
-        ;
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
         }
